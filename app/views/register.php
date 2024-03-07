@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="<?= urlTo('/public/adminlte/plugins/sweetalert2/sweetalert2.css'); ?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= urlTo('/public/adminlte/css/adminlte.min.css'); ?>">
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">

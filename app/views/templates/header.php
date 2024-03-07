@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .main-sidebar.sidebar-dark-primary {
-      background-color: #28a745; /* Ganti dengan warna yang diinginkan */
-    }
-  </style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +15,7 @@
   <link rel="stylesheet" href="<?= urlTo('/public/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <!-- sweetalert2 -->
   <link rel="stylesheet" type="text/css" href="<?= urlTo('/public/adminlte/plugins/sweetalert2/sweetalert2.css') ?>">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -86,7 +82,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="<?= urlTo('/') ?>" class="nav-link <?= menuActive(['home']); ?>">
-              <i class="nav-icon fas fa-university"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>Home</p>
             </a>
           </li>
@@ -104,7 +100,7 @@
             <?php if ($_SESSION['role'] === 'Administrator'): ?>
               <li class="nav-item">
                 <a href="<?= urlTo('/user'); ?>" class="nav-link <?= menuActive(['user']); ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-times-circle nav-icon"></i>
                   <p>User</p>
                 </a>
               </li>
@@ -112,21 +108,21 @@
 
               <li class="nav-item">
                 <a href="<?= urlTo('/kategoribuku'); ?>" class="nav-link <?= menuActive(['kategoribuku']); ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-times-circle  nav-icon"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="<?= urlTo('/buku'); ?>" class="nav-link <?= menuActive(['buku']); ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-times-circle  nav-icon"></i>
                   <p>Buku</p>
                 </a>
               </li>
               
               <li class="nav-item">
                 <a href="<?= urlTo('/peminjam'); ?>" class="nav-link <?= menuActive(['peminjam']); ?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-times-circle nav-icon"></i>
                   <p>Peminjam</p>
                 </a>
               </li>

@@ -26,25 +26,41 @@ class BukuController extends Controller
   }
 
   public function store()
-  {
+{
     $BukuID = $this->model('Buku')->create([
-      'Judul'       => $_POST['Judul'],
-      'Penulis'     => $_POST['Penulis'],
-      'Penerbit'    => $_POST['Penerbit'],
-      'TahunTerbit' => $_POST['TahunTerbit']
+        'Judul'       => $_POST['Judul'],
+        'Penulis'     => $_POST['Penulis'],
+        'Penerbit'    => $_POST['Penerbit'],
+        'TahunTerbit' => $_POST['TahunTerbit']
     ]);
 
     $KategoriID = $_POST['KategoriID'];
 
     if ($this->model('KBRelasi')->create([
-      'BukuID'      => $BukuID,
-      'KategoriID'  => $KategoriID
+        'BukuID'      => $BukuID,
+        'KategoriID'  => $KategoriID
     ]) > 0) {
-      redirectTo('success', 'Selamat, Buku berhasil di tambahkan', '/buku');
+        // Handle image upload
+        if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'C:/xampp/htdocs/ukk_perpus_jeky/public/adminlte/img/';
+            $uploadFile = $uploadDir . basename($_FILES['gambar']['name']);
+
+            // Move the uploaded file to the specified directory
+            if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadFile)) {
+                // Get the uploaded image name and store it in the database
+                $gambarName = basename($_FILES['gambar']['name']);
+                $this->model('Buku')->update($BukuID, ['Gambar' => $gambarName]);
+            } else {
+                // Handle the case when file upload fails
+                redirectTo('error', 'Maaf, Gagal mengunggah gambar', '/buku/create');
+            }
+        }
+
+        redirectTo('success', 'Selamat, Buku berhasil ditambahkan', '/buku');
     } else {
-      redirectTo('error', 'Maaf, Buku gagal di tambahkan', '/buku/create');
+        redirectTo('error', 'Maaf, Buku gagal ditambahkan', '/buku/create');
     }
-  }
+}
 
   public function edit($id)
   {
@@ -80,7 +96,7 @@ class BukuController extends Controller
   {
     $data = $this->model('KBRelasi')->get();
     $html 	= "<center>";
-		$html 	.= "<h1>SMK ASSALAM SAMARANG</h1>";
+		$html 	.= "<h1>SMK TELKOM MEDAN</h1>";
 		$html 	.= "<h2>PERPUSTAKAAN DIGITAL</h2>";
 		$html 	.= "<h3>DAFTAR BUKU</h3>";
 		$html 	.= "<hr>";

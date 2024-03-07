@@ -16,6 +16,14 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= urlTo('/public/adminlte/css/adminlte.min.css'); ?>">
 </head>
+<style>
+    body {
+      background-image: url('public/adminlte/img/background.jpeg'); /* Ganti 'path/to/your/image.jpg' dengan path gambar Anda */
+      background-size: cover; /* Menyesuaikan gambar agar selalu menutupi seluruh halaman */
+      background-position: center; /* Posisi gambar di tengah halaman */
+      background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+    }
+  </style>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="card">

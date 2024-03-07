@@ -1,4 +1,15 @@
 <?php include '../app/views/templates/header.php'; ?>
+<?php
+$jumlahUlasan = count($data['ulasan']);
+$totalRating = 0;
+
+foreach ($data['ulasan'] as $ulasan) {
+    $totalRating += $ulasan['Rating'];
+}
+
+$rataRataRating = ($jumlahUlasan > 0) ? round($totalRating / $jumlahUlasan, 1) : 0;
+?>
+
 <div class="container-fluid">
         <div class="row">
           <div class="col-md-3">
@@ -43,7 +54,7 @@
             	</div>
 
             	<div class="card-body">
-            		<table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Ulasan</th>
@@ -67,7 +78,11 @@
                     <th>Pemberi Ulasan</th>
                   </tr>
                   </tfoot>
+                  
                 </table>
+                <div class="mt-4">
+        <h5>Rata-rata Rating: <?= $rataRataRating; ?></h5>
+    </div>
             	</div>
             </div>
           </div>
